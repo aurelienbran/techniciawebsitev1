@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "title": "L'Évolution de l'IA dans la Maintenance Industrielle",
+    "subtitle": "Comment la technologie avancée transforme le secteur industriel"
+  },
+  "timeline": {
+    "title": "Notre Histoire",
+    "events": {
+      "founding": {
+        "title": "Fondation",
+        "description": "Création de TechnicIA par des experts en maintenance"
+      },
+      "development": {
+        "title": "Développement",
+        "description": "Premier prototype d'IA pour l'assistance à la maintenance"
+      },
+      "launch": {
+        "title": "Lancement",
+        "description": "Introduction de notre solution sur le marché"
+      }
+    }
+  },
+  "team": {
+    "title": "Notre Équipe",
+    "subtitle": "Des experts en technologie industrielle, maintenance et intelligence artificielle"
+  },
+  "technology": {
+    "title": "Notre Stack Technologique",
+    "subtitle": "Technologies de pointe pour des solutions innovantes"
+  }
+}

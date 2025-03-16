@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "solution": "Unsere Lösung",
+    "demo": "Demonstrator",
+    "about": "Über uns",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "KI-gestützter Assistent für industrielle Wartung",
+    "subtitle": "Stärken Sie Ihre Techniker mit intelligenter Diagnoseunterstützung",
+    "cta": {
+      "primary": "Entdecken Sie unsere Lösung",
+      "secondary": "Demo ansehen"
+    }
+  },
+  "features": {
+    "title": "Industrielle Wartung transformieren",
+    "subtitle": "Nutzen Sie modernste KI-Technologie zur Optimierung Ihrer Wartungsabläufe und Reduzierung von Ausfallzeiten"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Wir sind hier, um Ihre Fragen zu beantworten und zu besprechen, wie TechnicIA Ihrem Unternehmen helfen kann",
+    "response": "Wir antworten in der Regel innerhalb von 24 Stunden"
+  }
+}

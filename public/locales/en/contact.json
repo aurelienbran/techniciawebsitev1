@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "title": "Get in Touch",
+    "subtitle": "We're here to answer your questions and discuss how TechnicIA can help your business"
+  },
+  "form": {
+    "title": "Send Us a Message",
+    "fields": {
+      "name": {
+        "label": "Full Name",
+        "placeholder": "Enter your full name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "company": {
+        "label": "Company",
+        "placeholder": "Your company name"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "How can we help you?"
+      }
+    },
+    "submit": "Send Message",
+    "success": "Message sent successfully!"
+  },
+  "contact": {
+    "title": "Contact Information",
+    "email": "contact@technicia.com",
+    "phone": "+1 (555) 123-4567",
+    "address": "123 Tech Street, AI Valley"
+  }
+}

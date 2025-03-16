@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "home": "Home",
+    "solution": "La Nostra Soluzione",
+    "demo": "Dimostratore",
+    "about": "Chi Siamo",
+    "contact": "Contatti"
+  },
+  "hero": {
+    "title": "Assistente IA per la Manutenzione Industriale",
+    "subtitle": "Potenzia i tuoi tecnici con supporto diagnostico intelligente",
+    "cta": {
+      "primary": "Scopri la Nostra Soluzione",
+      "secondary": "Guarda la Demo"
+    }
+  },
+  "features": {
+    "title": "Trasformare la Manutenzione Industriale",
+    "subtitle": "Utilizza la tecnologia IA all'avanguardia per ottimizzare le operazioni di manutenzione e ridurre i tempi di inattività"
+  },
+  "contact": {
+    "title": "Contattaci",
+    "subtitle": "Siamo qui per rispondere alle tue domande e discutere come TechnicIA può aiutare la tua azienda",
+    "response": "Rispondiamo solitamente entro 24 ore"
+  }
+}

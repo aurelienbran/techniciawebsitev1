@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "solution": "Notre Solution",
+    "demo": "Démonstrateur",
+    "about": "À Propos",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Assistant IA pour la Maintenance Industrielle",
+    "subtitle": "Donnez plus de pouvoir à vos techniciens avec un support de diagnostic intelligent",
+    "cta": {
+      "primary": "Découvrir Notre Solution",
+      "secondary": "Voir la Démo"
+    }
+  },
+  "features": {
+    "title": "Transformer la Maintenance Industrielle",
+    "subtitle": "Utilisez la technologie IA de pointe pour optimiser vos opérations de maintenance et réduire les temps d'arrêt"
+  },
+  "footer": {
+    "description": "Révolutionner la maintenance industrielle avec des solutions alimentées par l'IA",
+    "quickLinks": "Liens Rapides",
+    "contact": "Contact",
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "Entrez votre email",
+    "subscribe": "S'abonner",
+    "copyright": "© {{year}} TechnicIA. Tous droits réservés."
+  }
+}

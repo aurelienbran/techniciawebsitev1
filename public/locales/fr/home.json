@@ -1,0 +1,49 @@
+{
+  "hero": {
+    "title": "Assistant IA pour la Maintenance Industrielle",
+    "subtitle": "Donnez plus de pouvoir à vos techniciens avec un support de diagnostic intelligent",
+    "demo": {
+      "question": "Comment puis-je vous aider avec vos besoins de maintenance ?",
+      "response": "Analyse de l'état de l'équipement..."
+    }
+  },
+  "features": {
+    "title": "Transformer la Maintenance Industrielle",
+    "subtitle": "Utilisez la technologie IA de pointe pour optimiser vos opérations de maintenance et réduire les temps d'arrêt",
+    "items": [
+      {
+        "title": "Compréhension du Langage Naturel",
+        "description": "Posez vos questions en langage courant, sans termes techniques spécialisés"
+      },
+      {
+        "title": "Diagnostic Intelligent",
+        "description": "Analyse précise et rapide des problèmes techniques"
+      },
+      {
+        "title": "Reconnaissance Visuelle",
+        "description": "Identification automatique des composants à partir des schémas techniques"
+      },
+      {
+        "title": "Conscience Contextuelle",
+        "description": "Mémorisation des questions précédentes pour une assistance cohérente"
+      },
+      {
+        "title": "Traduction Technique",
+        "description": "Conversion des termes techniques complexes en langage accessible"
+      },
+      {
+        "title": "Mémoire Procédurale",
+        "description": "Rappel précis des procédures de maintenance pour chaque équipement"
+      }
+    ]
+  },
+  "footer": {
+    "description": "Révolutionner la maintenance industrielle avec des solutions alimentées par l'IA",
+    "quickLinks": "Liens Rapides",
+    "contact": "Contact",
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "Entrez votre email",
+    "subscribe": "S'abonner",
+    "copyright": "© {{year}} TechnicIA. Tous droits réservés."
+  }
+}

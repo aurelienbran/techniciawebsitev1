@@ -1,0 +1,66 @@
+/* Intro Animation Styles */
+@keyframes loading-progress {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+.loading-progress {
+  animation: loading-progress 4s linear forwards;
+}
+
+.typing-text {
+  position: relative;
+}
+
+.typing-text::after {
+  content: '|';
+  position: absolute;
+  right: -4px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.neural-connection {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.gear {
+  transform-origin: center;
+  will-change: transform;
+}
+
+.intro-particle {
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+/* Enhanced Glassmorphism */
+.glass-effect {
+  background: rgba(30, 41, 59, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+}
+
+/* Gradient Effects */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(var(--background-primary), var(--background-primary)) padding-box,
+              linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)) border-box;
+  border: 2px solid transparent;
+  border-radius: 12px;
+}
+
+/* Smooth Transitions */
+.fade-transition {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scale-transition {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

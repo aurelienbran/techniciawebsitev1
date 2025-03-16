@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "title": "The Evolution of AI in Industrial Maintenance",
+    "subtitle": "How advanced technology is transforming the industrial sector"
+  },
+  "timeline": {
+    "title": "Our Journey",
+    "events": {
+      "founding": {
+        "title": "Foundation",
+        "description": "TechnicIA founded by maintenance experts"
+      },
+      "development": {
+        "title": "Development",
+        "description": "First AI prototype for maintenance assistance"
+      },
+      "launch": {
+        "title": "Launch",
+        "description": "Introduction of our solution to the market"
+      }
+    }
+  },
+  "team": {
+    "title": "Our Team",
+    "subtitle": "Experts in industrial technology, maintenance, and artificial intelligence"
+  },
+  "technology": {
+    "title": "Our Technology Stack",
+    "subtitle": "Cutting-edge technologies for innovative solutions"
+  }
+}

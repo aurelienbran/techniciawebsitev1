@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "title": "Next-Generation Industrial Maintenance Solution",
+    "subtitle": "AI-powered assistance that adapts to your specific industry needs"
+  },
+  "overview": {
+    "title": "How TechnicIA Works",
+    "subtitle": "Our advanced AI system processes your technical documentation and maintenance data, providing real-time assistance and actionable insights to your maintenance team.",
+    "features": {
+      "analysis": "Real-time analysis of equipment status and maintenance needs",
+      "processing": "Intelligent processing of technical documentation and schematics",
+      "learning": "Adaptive learning from maintenance history"
+    }
+  },
+  "benefits": {
+    "title": "Benefits",
+    "items": {
+      "downtime": {
+        "title": "Reduced Downtime",
+        "description": "Faster diagnostics and repairs mean less equipment downtime"
+      },
+      "cost": {
+        "title": "Cost Efficiency",
+        "description": "Optimize maintenance operations and reduce unnecessary part replacements"
+      },
+      "safety": {
+        "title": "Enhanced Safety",
+        "description": "Guided procedures reduce workplace accidents"
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to Transform Your Maintenance Operations?",
+    "subtitle": "Schedule a personalized demo today",
+    "button": "Book a Demo",
+    "note": "No commitment required"
+  }
+}

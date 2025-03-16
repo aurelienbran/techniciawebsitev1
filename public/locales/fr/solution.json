@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "title": "Solution de Maintenance Industrielle de Nouvelle Génération",
+    "subtitle": "Une assistance alimentée par l'IA qui s'adapte à vos besoins industriels spécifiques"
+  },
+  "overview": {
+    "title": "Comment fonctionne TechnicIA",
+    "subtitle": "Notre système IA avancé traite votre documentation technique et vos données de maintenance, fournissant une assistance en temps réel et des informations exploitables à votre équipe de maintenance.",
+    "features": {
+      "analysis": "Analyse en temps réel de l'état des équipements et des besoins de maintenance",
+      "processing": "Traitement intelligent de la documentation technique et des schémas",
+      "learning": "Apprentissage adaptatif à partir de l'historique de maintenance"
+    }
+  },
+  "benefits": {
+    "title": "Avantages",
+    "items": {
+      "downtime": {
+        "title": "Réduction des Temps d'Arrêt",
+        "description": "Des diagnostics et des réparations plus rapides signifient moins de temps d'arrêt des équipements"
+      },
+      "cost": {
+        "title": "Efficacité des Coûts",
+        "description": "Optimisez les opérations de maintenance et réduisez les remplacements inutiles de pièces"
+      },
+      "safety": {
+        "title": "Sécurité Améliorée",
+        "description": "Les procédures guidées réduisent les accidents de travail"
+      }
+    }
+  },
+  "cta": {
+    "title": "Prêt à Transformer vos Opérations de Maintenance ?",
+    "subtitle": "Planifiez une démonstration personnalisée aujourd'hui",
+    "button": "Réserver une Démo",
+    "note": "Aucun engagement requis"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "title": "Experience TechnicIA in Action",
+    "subtitle": "Interact with our AI assistant to see how it transforms industrial maintenance"
+  },
+  "chat": {
+    "placeholder": "Type your maintenance question...",
+    "thinking": "TechnicIA is thinking...",
+    "send": "Send"
+  },
+  "scenarios": {
+    "title": "Demo Scenarios",
+    "items": {
+      "diagnosis": {
+        "title": "Motor Failure Diagnosis",
+        "description": "See how TechnicIA guides technicians through motor troubleshooting"
+      },
+      "procedure": {
+        "title": "Maintenance Guide",
+        "description": "Experience step-by-step maintenance guidance"
+      }
+    }
+  }
+}

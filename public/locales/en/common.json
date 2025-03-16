@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "home": "Home",
+    "solution": "Our Solution",
+    "demo": "Demonstrator",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "AI-Powered Industrial Maintenance Assistant",
+    "subtitle": "Empowering technicians with intelligent diagnostic support",
+    "cta": {
+      "primary": "Discover Our Solution",
+      "secondary": "Watch Demo"
+    }
+  },
+  "features": {
+    "title": "Transforming Industrial Maintenance",
+    "subtitle": "Leverage cutting-edge AI technology to optimize your maintenance operations and reduce downtime"
+  },
+  "footer": {
+    "description": "Revolutionizing industrial maintenance with AI-powered solutions",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "copyright": "© {{year}} TechnicIA. All rights reserved."
+  }
+}

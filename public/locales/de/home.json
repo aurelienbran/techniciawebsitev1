@@ -1,0 +1,23 @@
+{
+  "hero": {
+    "title": "KI-gestützter Assistent für industrielle Wartung",
+    "subtitle": "Stärken Sie Ihre Techniker mit intelligenter Diagnoseunterstützung",
+    "demo": {
+      "question": "Wie kann ich Ihnen bei Ihren Wartungsanforderungen helfen?",
+      "response": "Analysiere Gerätestatus..."
+    }
+  },
+  "features": {
+    "title": "Industrielle Wartung transformieren",
+    "subtitle": "Nutzen Sie modernste KI-Technologie zur Optimierung Ihrer Wartungsabläufe und Reduzierung von Ausfallzeiten"
+  },
+  "footer": {
+    "description": "Revolutionierung der industriellen Wartung mit KI-gestützten Lösungen",
+    "quickLinks": "Schnellzugriff",
+    "contact": "Kontakt",
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "E-Mail eingeben",
+    "subscribe": "Abonnieren",
+    "copyright": "© {{year}} TechnicIA. Alle Rechte vorbehalten."
+  }
+}

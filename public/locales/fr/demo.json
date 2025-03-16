@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "title": "Découvrez TechnicIA en Action",
+    "subtitle": "Interagissez avec notre assistant IA pour voir comment il transforme la maintenance industrielle"
+  },
+  "chat": {
+    "placeholder": "Posez votre question de maintenance...",
+    "thinking": "TechnicIA réfléchit...",
+    "send": "Envoyer"
+  },
+  "scenarios": {
+    "title": "Scénarios de Démonstration",
+    "items": {
+      "diagnosis": {
+        "title": "Diagnostic de Panne Moteur",
+        "description": "Voyez comment TechnicIA guide les techniciens dans le dépannage des moteurs"
+      },
+      "procedure": {
+        "title": "Guide de Maintenance",
+        "description": "Expérimentez un guidage étape par étape pour la maintenance"
+      }
+    }
+  }
+}

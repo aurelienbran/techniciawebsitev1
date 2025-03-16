@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous sommes là pour répondre à vos questions et discuter de la façon dont TechnicIA peut aider votre entreprise"
+  },
+  "form": {
+    "title": "Envoyez-nous un Message",
+    "fields": {
+      "name": {
+        "label": "Nom Complet",
+        "placeholder": "Entrez votre nom complet"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Entrez votre email"
+      },
+      "company": {
+        "label": "Entreprise",
+        "placeholder": "Nom de votre entreprise"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Comment pouvons-nous vous aider ?"
+      }
+    },
+    "submit": "Envoyer le Message",
+    "success": "Message envoyé avec succès !"
+  },
+  "contact": {
+    "title": "Informations de Contact",
+    "email": "contact@technicia.com",
+    "phone": "+33 1 23 45 67 89",
+    "address": "123 Avenue de la Technologie, Paris"
+  }
+}
