@@ -115,7 +115,7 @@ function App() {
           animate={{ y: 0 }}
           transition={{ duration: 0.5, delay: introStage === 'complete' ? 0.2 : 0 }}
         >
-          <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
               <motion.div 
@@ -172,7 +172,7 @@ function App() {
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="px-2 pt-2 pb-3 space-y-1">
+                <div className="max-w-screen-xl mx-auto px-2 pt-2 pb-3 space-y-1">
                   {['home', 'solution', 'demonstrator', 'about', 'contact'].map((page) => (
                     <button 
                       key={page}
@@ -253,8 +253,8 @@ function App() {
         </Suspense>
 
         {/* Footer */}
-        <footer className="bg-[var(--background-secondary)] py-12">
-          <div className="w-full px-4 sm:px-6 lg:px-8">
+        <footer className="bg-[var(--background-secondary)] py-16 mt-16">
+          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-4 gap-8">
               <div className="fade-in">
                 <div className="flex items-center mb-4">
@@ -267,12 +267,12 @@ function App() {
               </div>
               
               <div className="fade-in">
-                <h4 className="text-lg font-semibold mb-4">{t('footer.quickLinks')}</h4>
-                <ul className="space-y-2">
+                <h4 className="text-lg font-semibold mb-6">{t('footer.quickLinks')}</h4>
+                <ul className="space-y-3">
                   {['home', 'solution', 'demonstrator', 'about', 'contact'].map((page) => (
                     <li key={page}>
                       <button 
-                        className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)]"
+                        className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-200"
                         onClick={() => setCurrentPage(page)}
                       >
                         {t(`nav.${page}`)}
@@ -283,8 +283,8 @@ function App() {
               </div>
               
               <div className="fade-in">
-                <h4 className="text-lg font-semibold mb-4">{t('footer.contact')}</h4>
-                <ul className="space-y-2 text-[var(--text-secondary)]">
+                <h4 className="text-lg font-semibold mb-6">{t('footer.contact')}</h4>
+                <ul className="space-y-3 text-[var(--text-secondary)]">
                   <li>contact@technicia.com</li>
                   <li>+1 (555) 123-4567</li>
                   <li>123 Tech Street, AI Valley</li>
@@ -292,21 +292,21 @@ function App() {
               </div>
               
               <div className="fade-in">
-                <h4 className="text-lg font-semibold mb-4">{t('footer.newsletter')}</h4>
+                <h4 className="text-lg font-semibold mb-6">{t('footer.newsletter')}</h4>
                 <div className="flex">
                   <input
                     type="email"
                     placeholder={t('footer.newsletterPlaceholder')}
-                    className="flex-1 px-4 py-2 rounded-l-lg bg-[var(--background-primary)] border border-[var(--text-secondary)]/20 focus:outline-none focus:border-[var(--accent-primary)]"
+                    className="flex-1 px-4 py-3 rounded-l-lg bg-[var(--background-primary)] border border-[var(--text-secondary)]/20 focus:outline-none focus:border-[var(--accent-primary)] transition-colors duration-200"
                   />
-                  <button className="px-4 py-2 bg-[var(--accent-primary)] rounded-r-lg hover:bg-[var(--accent-secondary)] transition-colors duration-300">
+                  <button className="px-5 py-3 bg-[var(--accent-primary)] rounded-r-lg hover:bg-[var(--accent-secondary)] transition-all duration-300 font-medium">
                     {t('footer.subscribe')}
                   </button>
                 </div>
               </div>
             </div>
             
-            <div className="mt-8 pt-8 border-t border-[var(--text-secondary)]/20 text-center text-[var(--text-secondary)]">
+            <div className="mt-12 pt-8 border-t border-[var(--text-secondary)]/10 text-center text-[var(--text-secondary)]">
               <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
             </div>
           </div>
