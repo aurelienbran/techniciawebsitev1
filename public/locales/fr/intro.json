@@ -1,5 +1,15 @@
 {
-  "slogan": "L'IA au service de la maintenance industrielle",
+  "slogan": "Assistant IA pour la maintenance industrielle",
+  "description": "Révolutionner la maintenance industrielle avec l'intelligence artificielle pour des diagnostics plus rapides et une assistance technique en temps réel.",
+  "scroll": "Défiler pour explorer",
   "skip": "Passer l'intro",
-  "loading": "Chargement..."
+  "explore": "Découvrir TechnicIA",
+  "loading": "Chargement de l'expérience...",
+  "features": {
+    "title": "La maintenance intelligente simplifiée",
+    "schematic": "Traduction de schémas techniques",
+    "diagnostics": "Assistance au diagnostic intelligente",
+    "documentation": "Accès instantané à la documentation",
+    "training": "Modules de formation interactifs"
+  }
 }
