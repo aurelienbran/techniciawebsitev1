@@ -14,10 +14,15 @@ import {
   Truck,
   Building2,
   Radio,
-  ArrowRight,
-  ChevronDown
+  ArrowRight
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+// Import des nouveaux composants
+import HeroSection from '../components/HeroSection';
+import FeaturesSection from '../components/FeaturesSection';
+import StatsSection from '../components/StatsSection';
+import TestimonialsSection from '../components/TestimonialsSection';
 
 interface Industry {
   id: string;
@@ -170,31 +175,21 @@ const benefits = [
 
 export default function Solution() {
   const { t } = useTranslation(['solution', 'benefits']);
-  const [activeIndustry, setActiveIndustry] = useState(industries[0].id);
   const [expandedIndustry, setExpandedIndustry] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center py-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--background-primary)] to-[var(--background-secondary)]"></div>
-        <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-6xl font-bold mb-8 leading-tight">
-              {t('hero.title', { ns: 'solution' })}
-            </h1>
-            <p className="text-xl sm:text-2xl text-[var(--text-secondary)] mb-10 max-w-3xl mx-auto">
-              {t('hero.subtitle', { ns: 'solution' })}
-            </p>
-            <div className="animate-bounce mt-16">
-              <ChevronDown className="h-8 w-8 mx-auto text-[var(--accent-primary)]" />
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen">
+      {/* Nouveau Hero Section */}
+      <HeroSection />
+      
+      {/* Nouvelles Statistiques */}
+      <StatsSection />
+      
+      {/* Nouvelles Fonctionnalités */}
+      <FeaturesSection />
 
-      {/* Solution Overview */}
-      <section className="py-24">
+      {/* Solution Overview - Conservé mais mis à jour pour le thème blanc */}
+      <section className="py-24 bg-white">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -207,32 +202,32 @@ export default function Solution() {
                   <div className="mt-1 p-1 rounded-full bg-[var(--accent-primary)]/10 mr-4 flex-shrink-0">
                     <ArrowRight className="h-5 w-5 text-[var(--accent-primary)]" />
                   </div>
-                  <span className="text-lg">{t('overview.features.realtime', { ns: 'solution' })}</span>
+                  <span className="text-lg text-[var(--text-primary)]">{t('overview.features.realtime', { ns: 'solution' })}</span>
                 </li>
                 <li className="flex items-start">
                   <div className="mt-1 p-1 rounded-full bg-[var(--accent-primary)]/10 mr-4 flex-shrink-0">
                     <ArrowRight className="h-5 w-5 text-[var(--accent-primary)]" />
                   </div>
-                  <span className="text-lg">{t('overview.features.processing', { ns: 'solution' })}</span>
+                  <span className="text-lg text-[var(--text-primary)]">{t('overview.features.processing', { ns: 'solution' })}</span>
                 </li>
                 <li className="flex items-start">
                   <div className="mt-1 p-1 rounded-full bg-[var(--accent-primary)]/10 mr-4 flex-shrink-0">
                     <ArrowRight className="h-5 w-5 text-[var(--accent-primary)]" />
                   </div>
-                  <span className="text-lg">{t('overview.features.learning', { ns: 'solution' })}</span>
+                  <span className="text-lg text-[var(--text-primary)]">{t('overview.features.learning', { ns: 'solution' })}</span>
                 </li>
               </ul>
-              <button className="btn-secondary mt-10 px-8 py-3.5 rounded-lg font-medium">{t('overview.learnMore', { ns: 'solution' })}</button>
+              <button className="btn-primary mt-10 px-8 py-3.5 rounded-lg font-medium">{t('overview.learnMore', { ns: 'solution' })}</button>
             </div>
             <div className="relative">
               <div className="glass-card p-10 rounded-xl shadow-xl border border-[var(--accent-primary)]/10">
                 <div className="flex items-center justify-center mb-8">
-                  <Brain className="h-24 w-24 text-[var(--accent-primary)] animate-pulse" />
+                  <Brain className="h-24 w-24 text-[var(--accent-primary)]" style={{ animation: 'pulse 2s infinite ease-in-out' }} />
                 </div>
                 <div className="space-y-6">
-                  <div className="h-3 bg-[var(--accent-primary)]/20 rounded-full animate-pulse"></div>
-                  <div className="h-3 bg-[var(--accent-primary)]/20 rounded-full animate-pulse w-4/5"></div>
-                  <div className="h-3 bg-[var(--accent-primary)]/20 rounded-full animate-pulse w-2/3"></div>
+                  <div className="h-3 bg-[var(--accent-primary)]/20 rounded-full" style={{ animation: 'pulse 1.5s infinite ease-in-out' }}></div>
+                  <div className="h-3 bg-[var(--accent-primary)]/20 rounded-full w-4/5" style={{ animation: 'pulse 1.7s infinite ease-in-out' }}></div>
+                  <div className="h-3 bg-[var(--accent-primary)]/20 rounded-full w-2/3" style={{ animation: 'pulse 1.9s infinite ease-in-out' }}></div>
                 </div>
               </div>
             </div>
@@ -240,7 +235,7 @@ export default function Solution() {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Benefits Section - Mis à jour pour le thème blanc */}
       <section className="py-24 bg-[var(--background-secondary)]">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -254,7 +249,7 @@ export default function Solution() {
             {benefits.map((benefit, index) => (
               <motion.div
                 key={index}
-                className="glass-card p-8 rounded-xl shadow-lg border border-[var(--accent-primary)]/10 fade-in"
+                className="card bg-white fade-in"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -5 }}
@@ -276,8 +271,8 @@ export default function Solution() {
         </div>
       </section>
 
-      {/* Industry Adaptability */}
-      <section className="py-24">
+      {/* Industry Adaptability - Mis à jour pour le thème blanc */}
+      <section className="py-24 bg-white">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">{t('industries.title', { ns: 'solution' })}</h2>
@@ -290,8 +285,8 @@ export default function Solution() {
             {industries.map((industry) => (
               <motion.div
                 key={industry.id}
-                className={`glass-card p-8 rounded-xl cursor-pointer transition-all duration-300 border border-[var(--accent-primary)]/10 shadow-lg ${
-                  expandedIndustry === industry.id ? 'shadow-xl scale-105 border-[var(--accent-primary)]/30' : ''
+                className={`card bg-white cursor-pointer ${
+                  expandedIndustry === industry.id ? 'shadow-card-hover border-[var(--accent-primary)]/30' : ''
                 }`}
                 whileHover={{ y: -5 }}
                 onClick={() => setExpandedIndustry(
@@ -299,10 +294,10 @@ export default function Solution() {
                 )}
               >
                 <div className="flex items-center mb-6">
-                  <div className="h-12 w-12 rounded-full bg-[var(--accent-primary)]/20 flex items-center justify-center mr-4">
-                    {industry.icon}
+                  <div className="h-12 w-12 rounded-full bg-[var(--accent-primary)]/10 flex items-center justify-center mr-4">
+                    <div className="text-[var(--accent-primary)]">{industry.icon}</div>
                   </div>
-                  <h3 className="text-xl font-semibold">{t(`industries.${industry.id}.title`, { ns: 'solution' })}</h3>
+                  <h3 className="text-xl font-semibold text-[var(--text-primary)]">{t(`industries.${industry.id}.title`, { ns: 'solution' })}</h3>
                 </div>
                 <p className="text-[var(--text-secondary)] mb-6 text-lg">{t(`industries.${industry.id}.description`, { ns: 'solution' })}</p>
                 {expandedIndustry === industry.id && (
@@ -328,7 +323,10 @@ export default function Solution() {
         </div>
       </section>
 
-      {/* Implementation Process */}
+      {/* Témoignages */}
+      <TestimonialsSection />
+
+      {/* Implementation Process - Mis à jour pour le thème blanc */}
       <section className="py-24 bg-[var(--background-secondary)]">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">{t('process.title', { ns: 'solution' })}</h2>
@@ -338,7 +336,7 @@ export default function Solution() {
               {processSteps.map((step, index) => (
                 <motion.div
                   key={step.id}
-                  className="glass-card p-8 rounded-xl relative fade-in shadow-lg border border-[var(--accent-primary)]/10"
+                  className="card bg-white relative fade-in"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -350,7 +348,7 @@ export default function Solution() {
                     {step.id}
                   </div>
                   <div className="mt-8">
-                    <h3 className="text-xl font-semibold mb-4">{t(`process.steps.${step.id}.title`, { ns: 'solution' })}</h3>
+                    <h3 className="text-xl font-semibold mb-4 text-[var(--text-primary)]">{t(`process.steps.${step.id}.title`, { ns: 'solution' })}</h3>
                     <p className="text-[var(--text-secondary)] text-lg">{t(`process.steps.${step.id}.description`, { ns: 'solution' })}</p>
                   </div>
                 </motion.div>
@@ -360,21 +358,21 @@ export default function Solution() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--background-primary)] to-[var(--background-secondary)]"></div>
-        <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-5xl font-bold mb-6 leading-tight">
+      {/* CTA Section - Mis à jour pour le thème blanc */}
+      <section className="py-24 relative overflow-hidden bg-white">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-5xl font-bold mb-6 leading-tight text-[var(--text-primary)]">
             {t('cta.title', { ns: 'solution' })}
           </h2>
           <p className="text-xl text-[var(--text-secondary)] mb-10 max-w-3xl mx-auto">
             Get started with TechnicIA today and transform your maintenance operations
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6 mt-8">
-            <button className="bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] text-white font-medium py-4 px-8 rounded-lg transition-colors duration-300 text-lg shadow-lg hover:shadow-xl">
+            <button className="btn-primary flex items-center gap-2 px-8 py-3.5 rounded-lg font-medium">
               {t('cta.demo', { ns: 'solution' })}
+              <ArrowRight className="w-5 h-5" />
             </button>
-            <button className="bg-transparent border-2 border-[var(--accent-primary)] text-[var(--text-primary)] font-medium py-4 px-8 rounded-lg hover:bg-[var(--accent-primary)]/10 transition-colors duration-300 text-lg">
+            <button className="btn-secondary px-8 py-3.5 rounded-lg font-medium">
               {t('cta.consultation', { ns: 'solution' })}
             </button>
           </div>
