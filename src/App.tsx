@@ -14,7 +14,6 @@ import LoadingScreen from './components/LoadingScreen';
 import IntroAnimation from './components/IntroAnimation';
 import IntroScreen from './components/IntroScreen';
 import Features from './components/Features';
-import CustomCursor from './components/CustomCursor'; 
 import './styles/intro.css';
 
 function App() {
@@ -25,16 +24,15 @@ function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [introStage, setIntroStage] = useState<'animation' | 'screen' | 'complete'>('animation');
   const [isLoading, setIsLoading] = useState(true);
-  const [hasVisitedBefore, setHasVisitedBefore] = useState(false);
   const featuresRef = useRef<HTMLDivElement>(null);
 
-  // Check if user has visited before
+  // Check if we should skip intro based on URL hash or localStorage
   useEffect(() => {
-    const visited = localStorage.getItem('hasVisitedBefore') === 'true';
-    setHasVisitedBefore(visited);
+    const skipIntro = window.location.hash === '#skip-intro' || 
+                     (localStorage.getItem('hasSeenIntro') === 'true' && 
+                      window.location.hash !== '#force-intro');
     
-    // Skip intro if hash parameter exists
-    if (window.location.hash === '#skip-intro') {
+    if (skipIntro) {
       setShowIntro(false);
       setIntroStage('complete');
     }
@@ -44,22 +42,17 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-      
-      // Skip directly to the main app if visited before and no force-intro parameter
-      if (hasVisitedBefore && window.location.hash !== '#force-intro') {
-        setShowIntro(false);
-        setIntroStage('complete');
-      }
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [hasVisitedBefore]);
+  }, []);
 
   // Handle scroll effects
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
+      // Observe elements with fade-in class
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach(entry => {
@@ -87,7 +80,7 @@ function App() {
   // Handle intro screen complete
   const handleIntroScreenComplete = () => {
     // Mark as visited and complete intro
-    localStorage.setItem('hasVisitedBefore', 'true');
+    localStorage.setItem('hasSeenIntro', 'true');
     setIntroStage('complete');
     setShowIntro(false);
   };
@@ -99,9 +92,6 @@ function App() {
 
   return (
     <>
-      {/* Enhanced cursor for better interaction feel */}
-      <CustomCursor />
-      
       {/* Intro Animation Sequence */}
       {showIntro && introStage === 'animation' && (
         <IntroAnimation onComplete={handleAnimationComplete} />
@@ -116,7 +106,7 @@ function App() {
       <div className="min-h-screen bg-[var(--background-primary)]">
         <ScrollProgress />
         
-        {/* Enhanced Navigation with Animation */}
+        {/* Navigation */}
         <motion.nav 
           className={`fixed w-full z-50 transition-all duration-300 ${
             isScrolled ? 'bg-[var(--background-primary)]/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
@@ -127,7 +117,7 @@ function App() {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
-              {/* Logo with hover animation */}
+              {/* Logo */}
               <motion.div 
                 className="flex items-center cursor-pointer" 
                 onClick={() => setCurrentPage('home')}
@@ -138,16 +128,14 @@ function App() {
                 <span className="ml-2 text-xl font-bold">TechnicIA</span>
               </motion.div>
 
-              {/* Desktop Navigation with improved hover effects */}
+              {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-4">
                 <div className="flex items-center space-x-4">
                   {['home', 'solution', 'demonstrator', 'about', 'contact'].map((page) => (
-                    <motion.button 
+                    <button 
                       key={page}
                       className={`nav-link relative ${currentPage === page ? 'active' : ''}`}
                       onClick={() => setCurrentPage(page)}
-                      whileHover={{ y: -2 }}
-                      whileTap={{ y: 0 }}
                     >
                       {t(`nav.${page}`)}
                       {currentPage === page && (
@@ -156,89 +144,57 @@ function App() {
                           layoutId="navIndicator"
                         />
                       )}
-                    </motion.button>
+                    </button>
                   ))}
                 </div>
                 <LanguageSelector />
               </div>
 
-              {/* Mobile menu button with animation */}
+              {/* Mobile menu button */}
               <div className="md:hidden">
-                <motion.button
+                <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   className="text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors duration-300"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
                 >
-                  <AnimatePresence mode="wait">
-                    {isMenuOpen ? (
-                      <motion.div
-                        key="close"
-                        initial={{ rotate: -90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: 90, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <X className="h-6 w-6" />
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key="menu"
-                        initial={{ rotate: 90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: -90, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <Menu className="h-6 w-6" />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.button>
+                  {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                </button>
               </div>
             </div>
           </div>
 
-          {/* Enhanced Mobile Navigation */}
+          {/* Mobile Navigation */}
           <AnimatePresence>
             {isMenuOpen && (
               <motion.div 
                 className="md:hidden bg-[var(--background-secondary)]/95 backdrop-blur-md"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <motion.div className="px-2 pt-2 pb-3 space-y-1">
-                  {['home', 'solution', 'demonstrator', 'about', 'contact'].map((page, index) => (
-                    <motion.button 
+                <div className="px-2 pt-2 pb-3 space-y-1">
+                  {['home', 'solution', 'demonstrator', 'about', 'contact'].map((page) => (
+                    <button 
                       key={page}
                       className={`nav-link block w-full text-left ${currentPage === page ? 'active' : ''}`}
                       onClick={() => {
                         setCurrentPage(page);
                         setIsMenuOpen(false);
                       }}
-                      initial={{ x: -20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.05, duration: 0.3 }}
                     >
                       {t(`nav.${page}`)}
-                    </motion.button>
+                    </button>
                   ))}
-                  <motion.div 
-                    className="px-4 py-2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.25, duration: 0.3 }}
-                  >
+                  <div className="px-4 py-2">
                     <LanguageSelector />
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
         </motion.nav>
 
-        {/* Main Content with Page Transitions */}
+        {/* Main Content */}
         <Suspense fallback={<LoadingScreen />}>
           <AnimatePresence mode="wait">
             {currentPage === 'home' ? (
@@ -255,9 +211,9 @@ function App() {
             ) : currentPage === 'solution' ? (
               <motion.div
                 key="solution"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               >
                 <Solution />
@@ -265,9 +221,9 @@ function App() {
             ) : currentPage === 'about' ? (
               <motion.div
                 key="about"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               >
                 <About />
@@ -275,9 +231,9 @@ function App() {
             ) : currentPage === 'contact' ? (
               <motion.div
                 key="contact"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               >
                 <Contact />
@@ -285,9 +241,9 @@ function App() {
             ) : (
               <motion.div
                 key="demonstrator"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               >
                 <Demonstrator />
@@ -296,7 +252,7 @@ function App() {
           </AnimatePresence>
         </Suspense>
 
-        {/* Enhanced Footer */}
+        {/* Footer */}
         <footer className="bg-[var(--background-secondary)] py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-4 gap-8">
@@ -315,14 +271,12 @@ function App() {
                 <ul className="space-y-2">
                   {['home', 'solution', 'demonstrator', 'about', 'contact'].map((page) => (
                     <li key={page}>
-                      <motion.button 
+                      <button 
                         className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)]"
                         onClick={() => setCurrentPage(page)}
-                        whileHover={{ x: 5 }}
-                        transition={{ duration: 0.2 }}
                       >
                         {t(`nav.${page}`)}
-                      </motion.button>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -345,26 +299,16 @@ function App() {
                     placeholder={t('footer.newsletterPlaceholder')}
                     className="flex-1 px-4 py-2 rounded-l-lg bg-[var(--background-primary)] border border-[var(--text-secondary)]/20 focus:outline-none focus:border-[var(--accent-primary)]"
                   />
-                  <motion.button 
-                    className="px-4 py-2 bg-[var(--accent-primary)] rounded-r-lg hover:bg-[var(--accent-secondary)] transition-colors duration-300"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
+                  <button className="px-4 py-2 bg-[var(--accent-primary)] rounded-r-lg hover:bg-[var(--accent-secondary)] transition-colors duration-300">
                     {t('footer.subscribe')}
-                  </motion.button>
+                  </button>
                 </div>
               </div>
             </div>
             
-            <motion.div 
-              className="mt-8 pt-8 border-t border-[var(--text-secondary)]/20 text-center text-[var(--text-secondary)]"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
+            <div className="mt-8 pt-8 border-t border-[var(--text-secondary)]/20 text-center text-[var(--text-secondary)]">
               <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
-            </motion.div>
+            </div>
           </div>
         </footer>
       </div>
