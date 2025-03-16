@@ -115,7 +115,7 @@ function App() {
           animate={{ y: 0 }}
           transition={{ duration: 0.5, delay: introStage === 'complete' ? 0.2 : 0 }}
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
               <motion.div 
@@ -254,7 +254,7 @@ function App() {
 
         {/* Footer */}
         <footer className="bg-[var(--background-secondary)] py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-4 gap-8">
               <div className="fade-in">
                 <div className="flex items-center mb-4">
