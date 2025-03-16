@@ -2,147 +2,165 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background-primary: #0f172a;    /* Fond principal - Bleu nuit profond */
+  --background-secondary: #1e293b;  /* Fond secondaire - Bleu nuit plus clair */
+  --accent-primary: #60a5fa;        /* Accent principal - Bleu vif */
+  --accent-secondary: #3b82f6;      /* Accent secondaire - Bleu plus foncé */
+  --text-primary: #f8fafc;          /* Texte principal - Blanc légèrement bleuté */
+  --text-secondary: #94a3b8;        /* Texte secondaire - Gris bleuté */
+  
+  /* Nouvelles variables pour améliorer le design */
+  --accent-primary-rgb: 96, 165, 250;
+  --shadow-color: rgba(0, 0, 0, 0.25);
+  --shadow-color-strong: rgba(0, 0, 0, 0.35);
+}
+
 @layer base {
-  :root {
-    --background-primary: #030712;    /* Darker background */
-    --background-secondary: #111827;  /* Darker secondary */
-    --accent-primary: #3b82f6;        /* Bright blue */
-    --accent-secondary: #60a5fa;      /* Lighter blue */
-    --text-primary: #f8fafc;          /* Off-white */
-    --text-secondary: #cbd5e1;        /* Light gray */
-  }
-
   body {
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    @apply bg-[var(--background-primary)] text-[var(--text-primary)] scroll-smooth;
+    @apply bg-[var(--background-primary)] text-[var(--text-primary)];
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
-  ::selection {
-    @apply bg-[var(--accent-primary)] text-white;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+  
+  h3 {
+    @apply text-xl sm:text-2xl;
   }
 }
 
 @layer components {
-  .nav-link {
-    @apply px-4 py-2 text-[var(--text-secondary)] hover:text-[var(--accent-primary)] 
-           transition-all duration-300 relative overflow-hidden;
-  }
-
-  .nav-link::after {
-    @apply content-[''] absolute bottom-0 left-0 w-full h-0.5 
-           bg-[var(--accent-primary)] transform scale-x-0 origin-left
-           transition-transform duration-300;
-  }
-
-  .nav-link:hover::after {
-    @apply scale-x-100;
-  }
-
-  .nav-link.active {
-    @apply text-[var(--accent-primary)];
-  }
-
-  .nav-link.active::after {
-    @apply scale-x-100;
-  }
-
   .btn-primary {
-    @apply px-6 py-3 bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] 
-           text-white rounded-lg transition-all duration-300 
-           transform hover:-translate-y-1 hover:shadow-lg
-           relative overflow-hidden;
+    @apply bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] text-white transition-colors duration-300 shadow-md hover:shadow-lg;
   }
-
-  .btn-primary::before {
-    @apply content-[''] absolute inset-0 bg-white/20 
-           transform scale-x-0 origin-right transition-transform duration-500;
-  }
-
-  .btn-primary:hover::before {
-    @apply scale-x-100 origin-left;
-  }
-
+  
   .btn-secondary {
-    @apply px-6 py-3 bg-transparent border-2 border-[var(--accent-primary)] 
-           text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-white 
-           rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg
-           relative overflow-hidden;
+    @apply bg-transparent border border-[var(--accent-primary)] text-[var(--text-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors duration-300;
   }
-
+  
   .glass-card {
-    @apply backdrop-blur-xl bg-[var(--background-secondary)] bg-opacity-80
-           rounded-xl shadow-xl border border-white/10
-           hover:border-[var(--accent-primary)] hover:border-opacity-30 
-           transition-all duration-300
-           hover:transform hover:-translate-y-2;
+    @apply bg-[var(--background-secondary)]/40 backdrop-blur-md border border-white/5 transition-all duration-300;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   }
-
-  .stat-card {
-    @apply flex flex-col items-center justify-center p-6
-           bg-[var(--background-secondary)] bg-opacity-50 rounded-lg
-           border border-white/5 backdrop-blur-xl;
+  
+  .glass-card:hover {
+    @apply border-[var(--accent-primary)]/20;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   }
-
-  .testimonial-card {
-    @apply glass-card p-8 mx-4 my-2 relative;
+  
+  .nav-link {
+    @apply relative py-2 px-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-300;
   }
-
-  .gradient-border {
-    @apply relative rounded-xl overflow-hidden;
-    background: linear-gradient(var(--background-primary), var(--background-primary)) padding-box,
-                linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)) border-box;
-    border: 2px solid transparent;
+  
+  .nav-link.active {
+    @apply text-[var(--text-primary)];
   }
-
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r 
-           from-[var(--accent-primary)] to-[var(--accent-secondary)];
-  }
-
-  .animated-bg {
-    @apply absolute inset-0 -z-10;
-    background: radial-gradient(
-      circle at center,
-      var(--accent-primary)/5% 0%,
-      transparent 70%
-    );
-    animation: pulse 4s ease-in-out infinite;
-  }
-
-  .feature-card {
-    @apply glass-card p-8 relative overflow-hidden group;
-  }
-
-  .feature-card::before {
-    @apply content-[''] absolute inset-0 bg-gradient-to-r
-           from-[var(--accent-primary)]/10 to-[var(--accent-secondary)]/10
-           opacity-0 transition-opacity duration-300;
-  }
-
-  .feature-card:hover::before {
-    @apply opacity-100;
-  }
-
-  .feature-icon {
-    @apply w-12 h-12 rounded-xl bg-[var(--accent-primary)]/20
-           flex items-center justify-center mb-4
-           group-hover:bg-[var(--accent-primary)]/30
-           transition-colors duration-300;
-  }
-
+  
   .security-badge {
-    @apply flex items-center gap-2 px-4 py-2 rounded-full
-           bg-opacity-50 bg-[var(--background-secondary)] border border-opacity-20 border-[var(--accent-primary)]
-           text-sm text-[var(--text-secondary)];
-  }
-
-  .testimonial-avatar {
-    @apply w-16 h-16 rounded-full border-2 border-[var(--accent-primary)]
-           p-0.5 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)];
+    @apply flex items-center gap-2 py-1.5 px-3 rounded-full bg-[var(--accent-primary)]/10 text-sm;
   }
 }
 
+/* Animations */
+.animated-bg {
+  @apply absolute inset-0 overflow-hidden;
+  background: radial-gradient(ellipse at top right, rgba(96, 165, 250, 0.15), transparent 70%),
+             radial-gradient(ellipse at bottom left, rgba(59, 130, 246, 0.1), transparent 70%);
+  z-index: -1;
+}
+
+.animated-bg::before {
+  content: '';
+  @apply absolute inset-0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%233b82f6' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+/* Improved gradient text */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)];
+}
+
+/* Scroll animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Extra animations and effects */
 @keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.05); opacity: 0.7; }
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.8;
+  }
+  50% { 
+    transform: scale(1.05); 
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive improvements */
+@screen lg {
+  .glass-card {
+    @apply rounded-xl;
+  }
+}
+
+@screen md {
+  h1 {
+    @apply leading-tight;
+  }
+  
+  h2, h3 {
+    @apply leading-snug;
+  }
+}
+
+/* Improved focus states for accessibility */
+button:focus, a:focus, input:focus {
+  @apply outline-none ring-2 ring-[var(--accent-primary)] ring-offset-1 ring-offset-[var(--background-primary)];
+}
+
+/* Added smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  .animated-bg::before {
+    display: none;
+  }
+  
+  .animated-bg {
+    background: var(--background-primary);
+  }
 }
