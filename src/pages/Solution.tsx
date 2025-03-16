@@ -137,38 +137,44 @@ const processSteps: ProcessStep[] = [
 const benefits = [
   {
     icon: <Gauge className="h-6 w-6" />,
+    key: 'Reduced Downtime',
     title: 'Reduced Downtime',
     description: 'Faster diagnostics and repairs mean less equipment downtime'
   },
   {
     icon: <BanknoteIcon className="h-6 w-6" />,
+    key: 'Cost Efficiency',
     title: 'Cost Efficiency',
     description: 'Optimize maintenance operations and reduce unnecessary part replacements'
   },
   {
     icon: <ShieldCheck className="h-6 w-6" />,
+    key: 'Enhanced Safety',
     title: 'Enhanced Safety',
     description: 'Proper procedure guidance reduces workplace accidents'
   },
   {
     icon: <BookOpen className="h-6 w-6" />,
+    key: 'Knowledge Retention',
     title: 'Knowledge Retention',
     description: 'Preserve expertise even as experienced technicians retire'
   },
   {
     icon: <CheckCircle2 className="h-6 w-6" />,
+    key: 'Consistent Quality',
     title: 'Consistent Quality',
     description: 'Standardized maintenance procedures across all shifts'
   },
   {
     icon: <TrendingUp className="h-6 w-6" />,
+    key: 'Continuous Improvement',
     title: 'Continuous Improvement',
     description: 'System learns and adapts from each interaction'
   }
 ];
 
 export default function Solution() {
-  const { t } = useTranslation('solution');
+  const { t } = useTranslation(['solution', 'benefits']);
   const [activeIndustry, setActiveIndustry] = useState(industries[0].id);
   const [expandedIndustry, setExpandedIndustry] = useState<string | null>(null);
 
@@ -177,13 +183,13 @@ export default function Solution() {
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--background-primary)] to-[var(--background-secondary)]"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative w-full px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl sm:text-6xl font-bold mb-6">
-              {t('hero.title')}
+              {t('hero.title', { ns: 'solution' })}
             </h1>
             <p className="text-xl sm:text-2xl text-[var(--text-secondary)] mb-8 max-w-3xl mx-auto">
-              {t('hero.subtitle')}
+              {t('hero.subtitle', { ns: 'solution' })}
             </p>
             <div className="animate-bounce mt-12">
               <ChevronDown className="h-8 w-8 mx-auto text-[var(--accent-primary)]" />
@@ -194,28 +200,28 @@ export default function Solution() {
 
       {/* Solution Overview */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">{t('overview.title')}</h2>
+              <h2 className="text-3xl font-bold mb-6">{t('overview.title', { ns: 'solution' })}</h2>
               <p className="text-[var(--text-secondary)] mb-6">
-                {t('overview.description')}
+                {t('overview.description', { ns: 'solution' })}
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <ArrowRight className="h-6 w-6 text-[var(--accent-primary)] mr-2 flex-shrink-0" />
-                  <span>{t('overview.features.realtime')}</span>
+                  <span>{t('overview.features.realtime', { ns: 'solution' })}</span>
                 </li>
                 <li className="flex items-start">
                   <ArrowRight className="h-6 w-6 text-[var(--accent-primary)] mr-2 flex-shrink-0" />
-                  <span>{t('overview.features.processing')}</span>
+                  <span>{t('overview.features.processing', { ns: 'solution' })}</span>
                 </li>
                 <li className="flex items-start">
                   <ArrowRight className="h-6 w-6 text-[var(--accent-primary)] mr-2 flex-shrink-0" />
-                  <span>{t('overview.features.learning')}</span>
+                  <span>{t('overview.features.learning', { ns: 'solution' })}</span>
                 </li>
               </ul>
-              <button className="btn-secondary mt-8">{t('overview.learnMore')}</button>
+              <button className="btn-secondary mt-8">{t('overview.learnMore', { ns: 'solution' })}</button>
             </div>
             <div className="relative">
               <div className="glass-card p-8">
@@ -235,7 +241,7 @@ export default function Solution() {
 
       {/* Benefits Section */}
       <section className="py-20 bg-[var(--background-secondary)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
               <div
@@ -246,8 +252,12 @@ export default function Solution() {
                 <div className="h-12 w-12 rounded-full bg-[var(--accent-primary)]/20 flex items-center justify-center mb-4">
                   {benefit.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{t(`benefits.${benefit.title}.title`)}</h3>
-                <p className="text-[var(--text-secondary)]">{t(`benefits.${benefit.title}.description`)}</p>
+                <h3 className="text-xl font-semibold mb-2">
+                  {t(`${benefit.key}.title`, { ns: 'benefits' })}
+                </h3>
+                <p className="text-[var(--text-secondary)]">
+                  {t(`${benefit.key}.description`, { ns: 'benefits' })}
+                </p>
               </div>
             ))}
           </div>
@@ -256,11 +266,11 @@ export default function Solution() {
 
       {/* Industry Adaptability */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">{t('industries.title')}</h2>
+            <h2 className="text-3xl font-bold mb-4">{t('industries.title', { ns: 'solution' })}</h2>
             <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
-              {t('industries.subtitle')}
+              {t('industries.subtitle', { ns: 'solution' })}
             </p>
           </div>
 
@@ -279,15 +289,15 @@ export default function Solution() {
                   <div className="h-10 w-10 rounded-full bg-[var(--accent-primary)]/20 flex items-center justify-center mr-4">
                     {industry.icon}
                   </div>
-                  <h3 className="text-xl font-semibold">{t(`industries.${industry.id}.title`)}</h3>
+                  <h3 className="text-xl font-semibold">{t(`industries.${industry.id}.title`, { ns: 'solution' })}</h3>
                 </div>
-                <p className="text-[var(--text-secondary)] mb-4">{t(`industries.${industry.id}.description`)}</p>
+                <p className="text-[var(--text-secondary)] mb-4">{t(`industries.${industry.id}.description`, { ns: 'solution' })}</p>
                 {expandedIndustry === industry.id && (
                   <ul className="space-y-2 mt-4 text-[var(--text-secondary)]">
                     {industry.benefits.map((benefit, index) => (
                       <li key={index} className="flex items-center">
                         <CheckCircle2 className="h-4 w-4 text-[var(--accent-primary)] mr-2" />
-                        {t(`industries.${industry.id}.benefits.${index}`)}
+                        {t(`industries.${industry.id}.benefits.${index}`, { ns: 'solution' })}
                       </li>
                     ))}
                   </ul>
@@ -300,8 +310,8 @@ export default function Solution() {
 
       {/* Implementation Process */}
       <section className="py-20 bg-[var(--background-secondary)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">{t('process.title')}</h2>
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">{t('process.title', { ns: 'solution' })}</h2>
           <div className="relative">
             <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--accent-primary)]/20"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -317,8 +327,8 @@ export default function Solution() {
                     {step.id}
                   </div>
                   <div className="mt-6">
-                    <h3 className="text-xl font-semibold mb-2">{t(`process.steps.${step.id}.title`)}</h3>
-                    <p className="text-[var(--text-secondary)]">{t(`process.steps.${step.id}.description`)}</p>
+                    <h3 className="text-xl font-semibold mb-2">{t(`process.steps.${step.id}.title`, { ns: 'solution' })}</h3>
+                    <p className="text-[var(--text-secondary)]">{t(`process.steps.${step.id}.description`, { ns: 'solution' })}</p>
                   </div>
                 </div>
               ))}
@@ -330,16 +340,16 @@ export default function Solution() {
       {/* CTA Section */}
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--background-primary)] to-[var(--background-secondary)]"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative w-full px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            {t('cta.title')}
+            {t('cta.title', { ns: 'solution' })}
           </h2>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-            <button className="btn-primary">{t('cta.demo')}</button>
-            <button className="btn-secondary">{t('cta.consultation')}</button>
+            <button className="btn-primary">{t('cta.demo', { ns: 'solution' })}</button>
+            <button className="btn-secondary">{t('cta.consultation', { ns: 'solution' })}</button>
           </div>
           <blockquote className="mt-8 text-[var(--text-secondary)] max-w-2xl mx-auto italic">
-            {t('cta.testimonial')}
+            {t('cta.testimonial', { ns: 'solution' })}
           </blockquote>
         </div>
       </section>
