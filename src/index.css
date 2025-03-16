@@ -14,6 +14,7 @@
   --accent-primary-rgb: 96, 165, 250;
   --shadow-color: rgba(0, 0, 0, 0.25);
   --shadow-color-strong: rgba(0, 0, 0, 0.35);
+  --accent-primary-10: rgba(96, 165, 250, 0.1); /* Nouvelle variable pour l'opacité */
 }
 
 @layer base {
@@ -45,7 +46,7 @@
   }
   
   .btn-secondary {
-    @apply bg-transparent border border-[var(--accent-primary)] text-[var(--text-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors duration-300;
+    @apply bg-transparent border border-[var(--accent-primary)] text-[var(--text-primary)] hover:bg-[var(--accent-primary-10)] transition-colors duration-300;
   }
   
   .glass-card {
@@ -67,7 +68,7 @@
   }
   
   .security-badge {
-    @apply flex items-center gap-2 py-1.5 px-3 rounded-full bg-[var(--accent-primary)]/10 text-sm;
+    @apply flex items-center gap-2 py-1.5 px-3 rounded-full bg-[var(--accent-primary-10)] text-sm;
   }
 }
 
