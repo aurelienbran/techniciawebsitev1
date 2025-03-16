@@ -14,7 +14,10 @@
   --accent-primary-rgb: 96, 165, 250;
   --shadow-color: rgba(0, 0, 0, 0.25);
   --shadow-color-strong: rgba(0, 0, 0, 0.35);
-  --accent-primary-10: rgba(96, 165, 250, 0.1); /* Nouvelle variable pour l'opacité */
+  --accent-primary-10: rgba(96, 165, 250, 0.1); /* Variable pour l'opacité 10% */
+  --accent-primary-20: rgba(96, 165, 250, 0.2); /* Variable pour l'opacité 20% */
+  --background-secondary-40: rgba(30, 41, 59, 0.4); /* Variable pour l'opacité 40% */
+  --white-05: rgba(255, 255, 255, 0.05); /* Variable pour l'opacité de white */
 }
 
 @layer base {
@@ -50,12 +53,12 @@
   }
   
   .glass-card {
-    @apply bg-[var(--background-secondary)]/40 backdrop-blur-md border border-white/5 transition-all duration-300;
+    @apply bg-[var(--background-secondary-40)] backdrop-blur-md border border-[var(--white-05)] transition-all duration-300;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   }
   
   .glass-card:hover {
-    @apply border-[var(--accent-primary)]/20;
+    @apply border-[var(--accent-primary-20)];
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   }
   
