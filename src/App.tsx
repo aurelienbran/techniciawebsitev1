@@ -1,30 +1,28 @@
-import React, { useState, useEffect, useRef, Suspense } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BrainCog, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Solution from './pages/Solution';
 import Demonstrator from './pages/Demonstrator';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import LanguageSelector from './components/LanguageSelector';
 import ScrollProgress from './components/ScrollProgress';
-import ScrollArrow from './components/ScrollArrow';
-import HomeHero from './components/HomeHero';
 import LoadingScreen from './components/LoadingScreen';
 import IntroAnimation from './components/IntroAnimation';
 import IntroScreen from './components/IntroScreen';
-import Features from './components/Features';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import FeaturesSection from './components/FeaturesSection';
+import StatsSection from './components/StatsSection';
+import TestimonialsSection from './components/TestimonialsSection';
+import Footer from './components/Footer';
 import './styles/intro.css';
 
 function App() {
   const { t } = useTranslation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
   const [showIntro, setShowIntro] = useState(true);
   const [introStage, setIntroStage] = useState<'animation' | 'screen' | 'complete'>('animation');
   const [isLoading, setIsLoading] = useState(true);
-  const featuresRef = useRef<HTMLDivElement>(null);
 
   // Check if we should skip intro based on URL hash or localStorage
   useEffect(() => {
@@ -49,26 +47,21 @@ function App() {
 
   // Handle scroll effects
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      
-      // Observe elements with fade-in class
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
+    // Observe elements with fade-in class
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-      document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+    
+    return () => observer.disconnect();
   }, []);
 
   // Handle intro animation complete
@@ -107,92 +100,7 @@ function App() {
         <ScrollProgress />
         
         {/* Navigation */}
-        <motion.nav 
-          className={`fixed w-full z-50 transition-all duration-300 ${
-            isScrolled ? 'bg-[var(--background-primary)]/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-          }`}
-          initial={introStage === 'complete' ? { y: -100 } : { y: 0 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.5, delay: introStage === 'complete' ? 0.2 : 0 }}
-        >
-          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              {/* Logo */}
-              <motion.div 
-                className="flex items-center cursor-pointer" 
-                onClick={() => setCurrentPage('home')}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <BrainCog className="h-8 w-8 text-[var(--accent-primary)]" />
-                <span className="ml-2 text-xl font-bold">TechnicIA</span>
-              </motion.div>
-
-              {/* Desktop Navigation */}
-              <div className="hidden md:flex items-center space-x-4">
-                <div className="flex items-center space-x-4">
-                  {['home', 'solution', 'demonstrator', 'about', 'contact'].map((page) => (
-                    <button 
-                      key={page}
-                      className={`nav-link relative ${currentPage === page ? 'active' : ''}`}
-                      onClick={() => setCurrentPage(page)}
-                    >
-                      {t(`nav.${page}`)}
-                      {currentPage === page && (
-                        <motion.div 
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--accent-primary)]"
-                          layoutId="navIndicator"
-                        />
-                      )}
-                    </button>
-                  ))}
-                </div>
-                <LanguageSelector />
-              </div>
-
-              {/* Mobile menu button */}
-              <div className="md:hidden">
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors duration-300"
-                >
-                  {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          <AnimatePresence>
-            {isMenuOpen && (
-              <motion.div 
-                className="md:hidden bg-[var(--background-secondary)]/95 backdrop-blur-md"
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="max-w-screen-xl mx-auto px-2 pt-2 pb-3 space-y-1">
-                  {['home', 'solution', 'demonstrator', 'about', 'contact'].map((page) => (
-                    <button 
-                      key={page}
-                      className={`nav-link block w-full text-left ${currentPage === page ? 'active' : ''}`}
-                      onClick={() => {
-                        setCurrentPage(page);
-                        setIsMenuOpen(false);
-                      }}
-                    >
-                      {t(`nav.${page}`)}
-                    </button>
-                  ))}
-                  <div className="px-4 py-2">
-                    <LanguageSelector />
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.nav>
+        <Navbar />
 
         {/* Main Content */}
         <Suspense fallback={<LoadingScreen />}>
@@ -205,8 +113,10 @@ function App() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <HomeHero />
-                <Features />
+                <HeroSection />
+                <FeaturesSection />
+                <StatsSection />
+                <TestimonialsSection />
               </motion.div>
             ) : currentPage === 'solution' ? (
               <motion.div
@@ -253,64 +163,7 @@ function App() {
         </Suspense>
 
         {/* Footer */}
-        <footer className="bg-[var(--background-secondary)] py-16 mt-16">
-          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-4 gap-8">
-              <div className="fade-in">
-                <div className="flex items-center mb-4">
-                  <BrainCog className="h-8 w-8 text-[var(--accent-primary)]" />
-                  <span className="ml-2 text-xl font-bold">TechnicIA</span>
-                </div>
-                <p className="text-[var(--text-secondary)]">
-                  {t('footer.description')}
-                </p>
-              </div>
-              
-              <div className="fade-in">
-                <h4 className="text-lg font-semibold mb-6">{t('footer.quickLinks')}</h4>
-                <ul className="space-y-3">
-                  {['home', 'solution', 'demonstrator', 'about', 'contact'].map((page) => (
-                    <li key={page}>
-                      <button 
-                        className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-200"
-                        onClick={() => setCurrentPage(page)}
-                      >
-                        {t(`nav.${page}`)}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div className="fade-in">
-                <h4 className="text-lg font-semibold mb-6">{t('footer.contact')}</h4>
-                <ul className="space-y-3 text-[var(--text-secondary)]">
-                  <li>contact@technicia.com</li>
-                  <li>+1 (555) 123-4567</li>
-                  <li>123 Tech Street, AI Valley</li>
-                </ul>
-              </div>
-              
-              <div className="fade-in">
-                <h4 className="text-lg font-semibold mb-6">{t('footer.newsletter')}</h4>
-                <div className="flex">
-                  <input
-                    type="email"
-                    placeholder={t('footer.newsletterPlaceholder')}
-                    className="flex-1 px-4 py-3 rounded-l-lg bg-[var(--background-primary)] border border-[var(--text-secondary)]/20 focus:outline-none focus:border-[var(--accent-primary)] transition-colors duration-200"
-                  />
-                  <button className="px-5 py-3 bg-[var(--accent-primary)] rounded-r-lg hover:bg-[var(--accent-secondary)] transition-all duration-300 font-medium">
-                    {t('footer.subscribe')}
-                  </button>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-12 pt-8 border-t border-[var(--text-secondary)]/10 text-center text-[var(--text-secondary)]">
-              <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );
