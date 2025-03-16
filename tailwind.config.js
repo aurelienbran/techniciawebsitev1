@@ -10,6 +10,8 @@ export default {
         'accent-secondary': 'var(--accent-secondary)',
         'text-primary': 'var(--text-primary)',
         'text-secondary': 'var(--text-secondary)',
+        'text-light': 'var(--text-light)',
+        'border-color': 'var(--border-color)',
       },
       typography: {
         DEFAULT: {
@@ -50,6 +52,13 @@ export default {
             },
           },
         },
+      },
+      boxShadow: {
+        'card': '0 4px 12px rgba(19, 36, 76, 0.05)',
+        'card-hover': '0 8px 20px rgba(19, 36, 76, 0.08)',
+      },
+      fontFamily: {
+        sans: ['Futura PT', 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
       },
     },
   },
