@@ -12,9 +12,9 @@ i18n
       loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
     fallbackLng: 'en',
-    supportedLngs: ['fr', 'en'],
+    supportedLngs: ['fr', 'en', 'de', 'it'],
     defaultNS: 'common',
-    ns: ['common', 'home', 'solution', 'about', 'demo', 'contact'],
+    ns: ['common', 'home', 'solution', 'about', 'demo', 'contact', 'intro', 'benefits'],
     interpolation: {
       escapeValue: false,
     },
@@ -29,7 +29,7 @@ i18n
       bindI18nStore: 'added',
     },
     load: 'languageOnly',
-    preload: ['fr', 'en'],
+    preload: ['fr', 'en', 'de', 'it'],
   });
 
 export default i18n;
