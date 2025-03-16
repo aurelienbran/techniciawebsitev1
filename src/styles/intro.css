@@ -1,66 +1,197 @@
-/* Intro Animation Styles */
-@keyframes loading-progress {
+/* Enhanced intro.css with sophisticated animations */
+
+/* Base styling for intro elements */
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Loading progress bar animation */
+.loading-progress {
+  width: 0;
+  animation: loading 4s linear forwards;
+}
+
+@keyframes loading {
   0% { width: 0; }
   100% { width: 100%; }
 }
 
-.loading-progress {
-  animation: loading-progress 4s linear forwards;
-}
-
+/* Typing text animation */
 .typing-text {
-  position: relative;
+  border-right: 2px solid var(--accent-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blinkCursor 0.8s step-end infinite;
 }
 
-.typing-text::after {
-  content: '|';
-  position: absolute;
-  right: -4px;
-  animation: blink 0.7s infinite;
+@keyframes blinkCursor {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--accent-primary); }
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+/* Logo pulse animation */
+.logo-pulse {
+  animation: pulse 2s infinite cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.5); opacity: 0.1; }
+  100% { transform: scale(1); opacity: 0.2; }
+}
+
+/* Neural network animations */
+.neural-node {
+  filter: drop-shadow(0 0 5px var(--accent-primary));
+  transition: all 0.3s ease;
 }
 
 .neural-connection {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
+  stroke-dasharray: 10;
+  animation: flowDash 2s linear infinite;
 }
 
+@keyframes flowDash {
+  to { stroke-dashoffset: -20; }
+}
+
+/* Data pulse animation along connection paths */
+.data-pulse {
+  animation: movePulse 2s infinite ease-in-out;
+}
+
+@keyframes movePulse {
+  0% { opacity: 0.8; r: 2; }
+  50% { opacity: 1; r: 3; }
+  100% { opacity: 0.8; r: 2; }
+}
+
+/* 3D Gear animations */
 .gear {
-  transform-origin: center;
-  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: perspective(800px) rotateY(10deg);
+  transition: transform 0.3s ease;
 }
 
+.gear:hover {
+  transform: perspective(800px) rotateY(20deg) scale(1.1);
+}
+
+/* Skip button hover effect */
+.skip-button {
+  transition: all 0.3s ease;
+}
+
+.skip-button:hover {
+  color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+/* Fancy fade-in animation for sequential elements */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll indicator pulse */
+.scroll-indicator {
+  animation: bounceArrow 2s infinite ease-in-out;
+}
+
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* Logo fragments enter animation */
+.logo-fragment {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-fragment:hover {
+  filter: brightness(1.5);
+}
+
+/* Interactive particle systems */
 .intro-particle {
+  transition: all 0.3s ease;
   will-change: transform, opacity;
+}
+
+/* Glassmorphism effect for cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(var(--accent-primary-rgb), 0.2);
+}
+
+/* Custom cursor effects */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--accent-primary);
+  border-radius: 50%;
+  position: fixed;
   pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s, transform 0.05s;
 }
 
-/* Enhanced Glassmorphism */
-.glass-effect {
-  background: rgba(30, 41, 59, 0.1);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+.custom-cursor.active {
+  width: 40px;
+  height: 40px;
+  border-width: 3px;
+  background-color: rgba(var(--accent-primary-rgb), 0.1);
+  transform: translate(-50%, -50%) scale(0.8);
 }
 
-/* Gradient Effects */
-.gradient-border {
-  position: relative;
-  background: linear-gradient(var(--background-primary), var(--background-primary)) padding-box,
-              linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)) border-box;
-  border: 2px solid transparent;
-  border-radius: 12px;
+/* Media queries for responsive animations */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .typing-text {
+    width: 100% !important;
+    border-right: none;
+  }
+  
+  .neural-connection, .neural-pulse, .logo-pulse, .logo-ring {
+    animation: none !important;
+  }
+  
+  .data-pulse, .intro-particle {
+    display: none;
+  }
 }
 
-/* Smooth Transitions */
-.fade-transition {
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.scale-transition {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Performance optimizations */
+.hardware-accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
