@@ -54,26 +54,11 @@
   h4 {
     @apply text-lg sm:text-xl;
   }
-
-  /* Assurer que les titres sont corrects en responsive */
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2.25rem;
-    }
-    
-    h2 {
-      font-size: 1.75rem;
-    }
-    
-    h3 {
-      font-size: 1.5rem;
-    }
-  }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] text-white transition-all duration-300 shadow-md hover:shadow-lg;
+    @apply bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] text-white transition-all duration-300 shadow-md hover:shadow-lg px-8 py-3.5 rounded-lg font-medium;
     transform: translateY(0);
   }
   
@@ -82,7 +67,7 @@
   }
   
   .btn-secondary {
-    @apply bg-transparent border border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary-10)] transition-all duration-300;
+    @apply bg-transparent border border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary-10)] transition-all duration-300 px-8 py-3.5 rounded-lg font-medium;
     transform: translateY(0);
   }
   
@@ -155,6 +140,47 @@
   transform: translateY(0);
 }
 
+/* efimove.ai Inspired Components */
+.feature-icon-wrapper {
+  @apply relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 mb-5;
+}
+
+.feature-icon-wrapper::before {
+  content: '';
+  @apply absolute w-full h-full rounded-full bg-blue-100 blur-lg opacity-70;
+  z-index: -1;
+}
+
+.feature-icon {
+  @apply text-[var(--accent-primary)] w-8 h-8;
+}
+
+.stat-card {
+  @apply bg-white rounded-xl shadow-sm p-6 border border-[var(--border-color)] transition-all duration-300;
+}
+
+.stat-card:hover {
+  @apply border-[var(--accent-primary-10)] shadow-md;
+  transform: translateY(-5px);
+}
+
+.stat-value {
+  @apply text-4xl md:text-5xl font-bold text-[var(--accent-primary)] mb-2;
+}
+
+.stat-label {
+  @apply text-[var(--text-secondary)] font-medium;
+}
+
+.testimonial-card {
+  @apply bg-white rounded-xl shadow-sm p-6 border border-[var(--border-color)] relative;
+}
+
+.testimonial-quote {
+  @apply text-5xl text-[var(--accent-primary-10)] absolute -top-2 left-6;
+  font-family: 'Georgia', serif;
+}
+
 /* Extra animations and effects */
 @keyframes pulse {
   0%, 100% { 
@@ -174,6 +200,18 @@
   50% {
     transform: translateY(-10px);
   }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.pulse-animation {
+  animation: pulse 4s infinite ease-in-out;
+}
+
+.gradient-circle {
+  background: radial-gradient(circle, rgba(38, 100, 235, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
 }
 
 /* Responsive improvements */
@@ -215,4 +253,36 @@ html {
   .animated-bg {
     background: var(--background-primary);
   }
+  
+  .float-animation,
+  .pulse-animation {
+    animation: none;
+  }
+}
+
+/* Navbar specific styles inspired by efimove.ai */
+.navbar {
+  @apply bg-white/90 backdrop-blur-md border-b border-[var(--border-color)] sticky top-0 z-50 transition-all duration-300;
+}
+
+.navbar-scrolled {
+  @apply shadow-sm;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary-10);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary-20);
 }
