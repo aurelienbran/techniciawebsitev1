@@ -1,5 +1,15 @@
 {
-  "slogan": "AI-Powered Industrial Maintenance Assistant",
-  "skip": "Skip Intro",
-  "loading": "Loading..."
+  "slogan": "AI-powered industrial maintenance assistant",
+  "description": "Revolutionizing industrial maintenance with artificial intelligence for faster diagnostics and real-time technical guidance.",
+  "scroll": "Scroll to explore",
+  "skip": "Skip intro",
+  "explore": "Discover TechnicIA",
+  "loading": "Loading experience...",
+  "features": {
+    "title": "Intelligent maintenance made simple",
+    "schematic": "Technical schematic translation",
+    "diagnostics": "Smart diagnostic assistance",
+    "documentation": "Instant documentation access",
+    "training": "Interactive training modules"
+  }
 }
