@@ -1,0 +1,26 @@
+{
+  "Reduced Downtime": {
+    "title": "Temps d'Arrêt Réduit",
+    "description": "Minimisez les temps d'arrêt des équipements en identifiant et résolvant rapidement les problèmes grâce aux diagnostics assistés par IA."
+  },
+  "Cost Efficiency": {
+    "title": "Efficacité des Coûts",
+    "description": "Réduisez les coûts de maintenance grâce à une allocation optimisée des ressources et des stratégies de maintenance prédictive."
+  },
+  "Enhanced Safety": {
+    "title": "Sécurité Améliorée",
+    "description": "Améliorez la sécurité du lieu de travail en identifiant les risques potentiels avant qu'ils ne provoquent des accidents ou des blessures."
+  },
+  "Knowledge Retention": {
+    "title": "Conservation des Connaissances",
+    "description": "Préservez les connaissances et l'expertise critiques en matière de maintenance, indépendamment du roulement du personnel."
+  },
+  "Consistent Quality": {
+    "title": "Qualité Constante", 
+    "description": "Assurez des procédures de maintenance standardisées et une qualité constante dans toutes les opérations."
+  },
+  "Continuous Improvement": {
+    "title": "Amélioration Continue",
+    "description": "Analysez les données de maintenance pour favoriser l'amélioration continue des processus et de la fiabilité des équipements."
+  }
+}
