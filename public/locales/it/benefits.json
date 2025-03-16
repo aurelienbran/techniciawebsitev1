@@ -1,0 +1,26 @@
+{
+  "Reduced Downtime": {
+    "title": "Tempi di Inattività Ridotti",
+    "description": "Minimizza i tempi di inattività delle apparecchiature identificando e risolvendo rapidamente i problemi attraverso la diagnostica basata sull'IA."
+  },
+  "Cost Efficiency": {
+    "title": "Efficienza dei Costi",
+    "description": "Riduci i costi di manutenzione attraverso l'allocazione ottimizzata delle risorse e strategie di manutenzione predittiva."
+  },
+  "Enhanced Safety": {
+    "title": "Sicurezza Migliorata",
+    "description": "Migliora la sicurezza sul lavoro identificando potenziali pericoli prima che causino incidenti o infortuni."
+  },
+  "Knowledge Retention": {
+    "title": "Conservazione delle Conoscenze",
+    "description": "Preserva conoscenze ed esperienza critiche di manutenzione indipendentemente dal turnover del personale."
+  },
+  "Consistent Quality": {
+    "title": "Qualità Costante", 
+    "description": "Garantisci procedure di manutenzione standardizzate e qualità costante in tutte le operazioni."
+  },
+  "Continuous Improvement": {
+    "title": "Miglioramento Continuo",
+    "description": "Analizza i dati di manutenzione per guidare miglioramenti continui nei processi e nell'affidabilità delle apparecchiature."
+  }
+}
