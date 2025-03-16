@@ -3,63 +3,102 @@
 @tailwind utilities;
 
 :root {
-  --background-primary: #0f172a;    /* Fond principal - Bleu nuit profond */
-  --background-secondary: #1e293b;  /* Fond secondaire - Bleu nuit plus clair */
-  --accent-primary: #60a5fa;        /* Accent principal - Bleu vif */
-  --accent-secondary: #3b82f6;      /* Accent secondaire - Bleu plus foncé */
-  --text-primary: #f8fafc;          /* Texte principal - Blanc légèrement bleuté */
-  --text-secondary: #94a3b8;        /* Texte secondaire - Gris bleuté */
+  /* Nouvelles couleurs adaptées pour fond blanc */
+  --background-primary: #ffffff;     /* Fond principal - Blanc */
+  --background-secondary: #f8fafc;   /* Fond secondaire - Gris très clair */
+  --accent-primary: #2664eb;         /* Accent principal - Bleu vif (de la charte) */
+  --accent-secondary: #13244c;       /* Accent secondaire - Bleu foncé (de la charte) */
+  --text-primary: #13244c;           /* Texte principal - Bleu foncé */
+  --text-secondary: #475569;         /* Texte secondaire - Gris foncé */
+  --text-light: #94a3b8;             /* Texte léger - Gris clair */
+  --border-color: #e2e8f0;           /* Couleur de bordure - Gris très clair */
   
-  /* Nouvelles variables pour améliorer le design */
-  --accent-primary-rgb: 96, 165, 250;
-  --shadow-color: rgba(0, 0, 0, 0.25);
-  --shadow-color-strong: rgba(0, 0, 0, 0.35);
-  --accent-primary-10: rgba(96, 165, 250, 0.1); /* Variable pour l'opacité 10% */
-  --accent-primary-20: rgba(96, 165, 250, 0.2); /* Variable pour l'opacité 20% */
-  --background-secondary-40: rgba(30, 41, 59, 0.4); /* Variable pour l'opacité 40% */
-  --white-05: rgba(255, 255, 255, 0.05); /* Variable pour l'opacité de white */
+  /* Variables pour les effets */
+  --accent-primary-rgb: 38, 100, 235;
+  --shadow-color: rgba(19, 36, 76, 0.05);
+  --shadow-color-strong: rgba(19, 36, 76, 0.15);
+  --accent-primary-10: rgba(38, 100, 235, 0.1);
+  --accent-primary-20: rgba(38, 100, 235, 0.2);
+  --background-secondary-40: rgba(248, 250, 252, 0.4);
+  --white-05: rgba(255, 255, 255, 0.05);
 }
 
 @layer base {
   body {
     @apply bg-[var(--background-primary)] text-[var(--text-primary)];
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Futura PT', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
+  /* Correction des styles de titres */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight;
+    @apply font-bold tracking-tight text-[var(--text-primary)];
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
   
   h1 {
     @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+    font-weight: 700;
+    letter-spacing: -0.5px;
   }
   
   h2 {
     @apply text-2xl sm:text-3xl md:text-4xl;
+    font-weight: 700;
   }
   
   h3 {
     @apply text-xl sm:text-2xl;
   }
+  
+  h4 {
+    @apply text-lg sm:text-xl;
+  }
+
+  /* Assurer que les titres sont corrects en responsive */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.25rem;
+    }
+    
+    h2 {
+      font-size: 1.75rem;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] text-white transition-colors duration-300 shadow-md hover:shadow-lg;
+    @apply bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] text-white transition-all duration-300 shadow-md hover:shadow-lg;
+    transform: translateY(0);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-3px);
   }
   
   .btn-secondary {
-    @apply bg-transparent border border-[var(--accent-primary)] text-[var(--text-primary)] hover:bg-[var(--accent-primary-10)] transition-colors duration-300;
+    @apply bg-transparent border border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary-10)] transition-all duration-300;
+    transform: translateY(0);
+  }
+  
+  .btn-secondary:hover {
+    transform: translateY(-3px);
   }
   
   .glass-card {
-    @apply bg-[var(--background-secondary-40)] backdrop-blur-md border border-[var(--white-05)] transition-all duration-300;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    @apply bg-white/90 backdrop-blur-md border border-[var(--border-color)] transition-all duration-300 rounded-xl;
+    box-shadow: 0 10px 30px var(--shadow-color);
   }
   
   .glass-card:hover {
     @apply border-[var(--accent-primary-20)];
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px var(--shadow-color-strong);
+    transform: translateY(-5px);
   }
   
   .nav-link {
@@ -67,26 +106,35 @@
   }
   
   .nav-link.active {
-    @apply text-[var(--text-primary)];
+    @apply text-[var(--accent-primary)] font-medium;
   }
   
   .security-badge {
-    @apply flex items-center gap-2 py-1.5 px-3 rounded-full bg-[var(--accent-primary-10)] text-sm;
+    @apply flex items-center gap-2 py-1.5 px-3 rounded-full bg-[var(--accent-primary-10)] text-sm text-[var(--text-primary)];
+  }
+
+  .card {
+    @apply bg-white border border-[var(--border-color)] rounded-xl shadow-sm p-6 transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply border-[var(--accent-primary-10)] shadow-md;
+    transform: translateY(-5px);
   }
 }
 
 /* Animations */
 .animated-bg {
   @apply absolute inset-0 overflow-hidden;
-  background: radial-gradient(ellipse at top right, rgba(96, 165, 250, 0.15), transparent 70%),
-             radial-gradient(ellipse at bottom left, rgba(59, 130, 246, 0.1), transparent 70%);
+  background: radial-gradient(ellipse at top right, rgba(38, 100, 235, 0.08), transparent 70%),
+             radial-gradient(ellipse at bottom left, rgba(19, 36, 76, 0.05), transparent 70%);
   z-index: -1;
 }
 
 .animated-bg::before {
   content: '';
   @apply absolute inset-0;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%233b82f6' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232664eb' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
   opacity: 0.5;
 }
 
